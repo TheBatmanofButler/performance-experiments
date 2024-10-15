@@ -15,7 +15,7 @@ os.makedirs(output_dir, exist_ok=True)
 def plot_metric(metric, ylabel, title, filename):
     """Plot and save the metric over time for each GPU."""
     plt.figure(figsize=(10, 5))
-    
+
     # Plot each GPU's data on the same graph
     for gpu_id in df['gpu_id'].unique():
         gpu_data = df[df['gpu_id'] == gpu_id]
@@ -28,7 +28,7 @@ def plot_metric(metric, ylabel, title, filename):
     plt.legend()
     plt.xticks(rotation=45)
     plt.tight_layout()
-    
+
     # Save the plot to a file
     plt.savefig(os.path.join(output_dir, filename))
     plt.close()  # Close the plot to free memory

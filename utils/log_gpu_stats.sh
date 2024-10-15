@@ -5,7 +5,7 @@ LOG_FILE="gpu_stats.csv"
 INTERVAL=5  # Log every 5 seconds
 
 # Initialize CSV with headers
-echo "timestamp,gpu_id,utilization,mem_usage,temp,power" > $LOG_FILE
+echo "timestamp,gpu_id,utilization,mem_usage,free_gpu_mem,used_gpu_mem,temp,power" > $LOG_FILE
 
 # Trap SIGINT (Ctrl+C) to exit gracefully
 trap "echo 'Script stopped by user'; exit" SIGINT
@@ -18,7 +18,7 @@ while true; do
     timestamp=$(date "+%Y-%m-%d %H:%M:%S")
 
     # Run nvidia-smi command and append to the log file
-    nvidia-smi --query-gpu=index,utilization.gpu,utilization.memory,temperature.gpu,power.draw \
+    nvidia-smi --query-gpu=index,utilization.gpu,utilization.memory,memory.free,memory.used,temperature.gpu,power.draw \
                --format=csv,noheader,nounits | while read line; do
         echo "$timestamp,$line" >> $LOG_FILE
     done
