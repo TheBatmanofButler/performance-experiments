@@ -36,6 +36,8 @@ def plot_metric(metric, ylabel, title, filename):
 # Generate and save plots for different metrics
 plot_metric('utilization', 'GPU Utilization (%)', 'GPU Utilization Over Time', 'gpu_utilization.png')
 plot_metric('mem_usage', 'Memory Usage (%)', 'GPU Memory Usage Over Time', 'gpu_memory_usage.png')
+plot_metric('free_gpu_mem', 'Memory (Bytes)', 'Total Free GPU Memory Over Time', 'free_gpu_memory.png')
+plot_metric('used_gpu_mem', 'Memory (Bytes)', 'Total Used GPU Memory Over Time', 'used_gpu_memory.png')
 plot_metric('temp', 'Temperature (°C)', 'GPU Temperature Over Time', 'gpu_temperature.png')
 plot_metric('power', 'Power Draw (W)', 'GPU Power Draw Over Time', 'gpu_power_draw.png')
 
